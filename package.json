@@ -1,6 +1,5 @@
 {
-  "name": "fucc",
-  "version": "0.1.0",
+  "name": "tannertanner",
   "private": true,
   "scripts": {
     "dev": "next dev",

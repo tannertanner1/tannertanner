@@ -34,5 +34,5 @@ next-env.d.ts
 
 # /prisma/dev.db
 .env
-/products
-/public/products
+# /products
+# /public/products

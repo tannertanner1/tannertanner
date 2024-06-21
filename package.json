@@ -5,7 +5,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "email": "cp .env ./node_modules/react-email && email dev --dir src/email --port 3001"
   },
   "dependencies": {
     "@prisma/client": "^5.15.0",
@@ -20,7 +21,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.395.0",
     "next": "14.2.4",
-    "prisma": "^5.15.1",
+    "prisma": "^5.15.0",
     "react": "^18",
     "react-dom": "^18",
     "react-email": "^2.1.4",

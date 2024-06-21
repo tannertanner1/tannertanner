@@ -33,7 +33,9 @@ export default function Products() {
           <Link href="/dashboard/products/new">Add Product</Link>
         </Button>
       </div>
-      <ProductsTable />
+      <div className="py-8">
+        <ProductsTable />
+      </div>
     </>
   );
 }

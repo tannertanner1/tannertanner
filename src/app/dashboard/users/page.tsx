@@ -33,7 +33,9 @@ export default function Users() {
   return (
     <>
       <PageHeader>Users</PageHeader>
-      <UsersTable />
+      <div className="py-8">
+        <UsersTable />
+      </div>
     </>
   );
 }

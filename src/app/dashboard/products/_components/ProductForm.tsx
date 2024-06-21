@@ -21,7 +21,7 @@ export function ProductForm({ product }: { product?: Product | null }) {
   );
 
   return (
-    <form action={action} className="space-y-8">
+    <form action={action} className="space-y-8 py-8">
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
         <Input

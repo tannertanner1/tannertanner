@@ -1,6 +1,16 @@
-Overview
+<h3>Demo</h3>
 
-[TOC]
+<!-- [TOC] -->
+
+- [/app](#app)
+  - [Database Setup](#database-setup)
+  - [UI Setup](#ui-setup)
+- [app/(admin)](#appadmin)
+  - [Install Zod](#install-zod)
+  - [Authentication](#authentication)
+- [app/(user)](#appuser)
+  - [Stripe API and Webhook](#stripe-api-and-webhook)
+  - [Resend and React Email](#resend-and-react-email)
 
 ---
 
@@ -129,6 +139,7 @@ touch middleware.ts lib/isValidPassword.ts
 - Run `vercel env add` to add environment variables
 
 ```bash
+npm i @vercel/speed-insights
 # optimal image optimization in production
 npm i sharp
 
@@ -152,21 +163,37 @@ vercel login
 <br />
 
 ```bash
-$ npm run lint
-
-> lint
-> next lint
-
-✔ No ESLint warnings or errors
 $ npm run build
 
 > build
-> next build
+> prisma generate && next build
 
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v5.15.0) to ./node_modules/@prisma/client in 582ms
+
+Start using Prisma Client in Node.js (See: https://pris.ly/d/client)
+
+`
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+`
+
+or start using Prisma Client at the edge (See: https://pris.ly/d/accelerate)
+
+`
+import { PrismaClient } from '@prisma/client/edge'
+const prisma = new PrismaClient()
+`
+
+See other ways of importing Prisma Client: http://pris.ly/d/importing-client
+
+┌─────────────────────────────────────
  ✓ Finalizing page optimization
 
 Route (app)                                      Size     First Load JS
-┌ ƒ /                                            189 B          99.1 kB
+┌ ƒ /                                            188 B          99.1 kB
 ├ ○ /_not-found                                  875 B            88 kB
 ├ ƒ /dashboard                                   138 B          87.2 kB
 ├ ƒ /dashboard/orders                            1.37 kB         119 kB
@@ -177,7 +204,7 @@ Route (app)                                      Size     First Load JS
 ├ ƒ /dashboard/users                             1.37 kB         119 kB
 ├ ƒ /orders                                      998 B          97.2 kB
 ├ ƒ /products                                    188 B          99.1 kB
-├ ƒ /products/[id]/checkout                      9.06 kB         108 kB
+├ ƒ /products/[id]/checkout                      9.07 kB         108 kB
 ├ ƒ /products/download/[downloadVerificationId]  0 B                0 B
 ├ ƒ /products/download/expired                   174 B            94 kB
 ├ ƒ /stripe/success                              189 B          99.1 kB

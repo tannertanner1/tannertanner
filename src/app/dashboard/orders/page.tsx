@@ -35,7 +35,9 @@ export default function Orders() {
   return (
     <>
       <PageHeader>Orders</PageHeader>
-      <OrdersTable />
+      <div className="py-8">
+        <OrdersTable />
+      </div>
     </>
   );
 }

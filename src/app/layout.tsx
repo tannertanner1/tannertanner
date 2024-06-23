@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// import type { Viewport } from 'next'
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Inter } from "next/font/google";
@@ -12,10 +11,6 @@ export const metadata: Metadata = {
   title: {
     absolute: "Demo",
   },
-  // title: {
-  //   template: "ㅜㅜ %s", // ㅠㅠ
-  //   default: "ㅜㅜ", // a default is required when creating a template
-  // },
   description:
     "User Management, Passwordless Authentication, Payment Processing, Transactional Emails",
   keywords: [
@@ -25,63 +20,14 @@ export const metadata: Metadata = {
     "Payment Processing",
     "Transactional Emails",
   ],
-  // metadataBase: new URL("https://tannertanner.vercel.app"),
-  // alternates: {
-  //   canonical: "/",
-  //   languages: {
-  //     "en-US": "/en-US",
-  //   },
-  // },
-  // creator: "Tanner Tanner",
-  // formatDetection: {
-  //   email: false,
-  //   address: false,
-  //   telephone: false,
-  // },
-  // authors: [{ name: "Tanner", url: "https://tannertanner.me" }],
-  // referrer: "origin-when-cross-origin",
-  // generator: "Next.js",
-  // applicationName: "Demo",
   openGraph: {
     title: "Demo",
     description:
       "User Management, Passwordless Authentication, Payment Processing, Transactional Emails",
-    // url: "https://tannertanner.vercel.app",
+    url: "https://tannertanner.vercel.app",
     siteName: "Demo",
-    // Must be an absolute URL
-    // images: [
-    //   {
-    //     url: "https://tannertanner.vercel.app/og.png",
-    //     width: 800,
-    //     height: 600,
-    //   },
-    //   {
-    //     url: "https://tannertanner.vercel.app/og-alt.png",
-    //     width: 1800,
-    //     height: 1600,
-    //     alt: "My custom alt",
-    //   },
-    // ],
-    // locale: "en_US",
-    // type: "website",
   },
 };
-// export function generateViewport(): Viewport {
-//   return {
-//     themeColor: 'black',
-//   }
-// }
-// export const viewport: Viewport = {
-//   // colorScheme: 'dark',
-//   themeColor: [
-//     { media: '(prefers-color-scheme: light)', color: 'cyan' },
-//     { media: '(prefers-color-scheme: dark)', color: 'black' },
-//   ],
-//   width: 'device-width',
-//   initialScale: 1,
-//   maximumScale: 1,
-//   userScalable: false,
-// }
 
 export default function RootLayout({
   children,

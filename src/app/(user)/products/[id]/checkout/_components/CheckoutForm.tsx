@@ -35,22 +35,22 @@ type CheckoutFormProps = {
   clientSecret: string;
 };
 
-// const appearance = {
-//   variables: {
-//     fontFamily: "Inter, sans-serif",
-//     colorText: "text-primary",
-//   },
-//   rules: {
-//     ".Input": {
-//       border: "1px solid #E2E8F0",
-//       borderRadius: "0.375rem",
-//     },
-//     ".Input:focus": {
-//       borderColor: "border-input",
-//       boxShadow: "none",
-//     },
-//   },
-// };
+const appearance = {
+  variables: {
+    fontFamily: "Inter, sans-serif",
+    colorText: "text-primary",
+  },
+  rules: {
+    ".Input": {
+      border: "1px solid #E2E8F0",
+      borderRadius: "0.375rem",
+    },
+    ".Input:focus": {
+      borderColor: "border-input",
+      boxShadow: "none",
+    },
+  },
+};
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
@@ -80,8 +80,8 @@ export function CheckoutForm({ product, clientSecret }: CheckoutFormProps) {
           </div>
         </div>
       </div>
-      <Elements options={{ clientSecret }} stripe={stripePromise}>
-        {/* <Elements options={{ clientSecret, appearance }} stripe={stripePromise}> */}
+      {/* <Elements options={{ clientSecret }} stripe={stripePromise}> */}
+      <Elements options={{ clientSecret, appearance }} stripe={stripePromise}>
         <Form priceInCents={product.priceInCents} productId={product.id} />
       </Elements>
     </div>
@@ -172,6 +172,29 @@ function Form({
     </form>
   );
 }
+
+// @note simulate webhook event -- TBD
+
+// export async function sendWebhookEvent(eventType: string) {
+//   await fetch("/api/webhooks/stripe", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       type: eventType,
+//       data: {
+//         object: {
+//           id: "test_payment_intent",
+//           status: "succeeded",
+//           amount_received: 1000,
+//           currency: "usd",
+//           // Add other relevant properties as needed
+//         },
+//       },
+//     }),
+//   });
+// }
 
 // <Suspense
 //   fallback={

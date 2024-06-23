@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/lib/formatters"
+import { formatCurrency } from "@/lib/formatters";
 import {
   Button,
   Column,
@@ -6,15 +6,15 @@ import {
   Row,
   Section,
   Text,
-} from "@react-email/components"
+} from "@react-email/components";
 
 type OrderInformationProps = {
-  order: { id: string; createdAt: Date; pricePaidInCents: number }
-  product: { imagePath: string; name: string; description: string }
-  downloadVerificationId: string
-}
+  order: { id: string; createdAt: Date; pricePaidInCents: number };
+  product: { imagePath: string; name: string; description: string };
+  downloadVerificationId: string;
+};
 
-const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "medium" })
+const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
 
 export function OrderInformation({
   order,
@@ -75,5 +75,5 @@ export function OrderInformation({
         </Row>
       </Section>
     </>
-  )
+  );
 }

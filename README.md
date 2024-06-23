@@ -13,6 +13,10 @@
 - [Prod: Update](#prod-update)
   - [Vercel CLI](#vercel-cli)
   - [Neon Postgres](#neon-postgres)
+  - [FUCK](#fuck)
+    - [Plan A](#plan-a)
+    - [Plan B](#plan-b)
+    - [Plan C](#plan-c)
 
 ---
 
@@ -42,16 +46,16 @@
   npx prisma migrate dev --name init
   ```
 
-  - Next steps:
+- Next steps:
 
-    - Set the `DATABASE_URL` in the `.env` file to point to your existing database. If your database has no tables yet, read [Getting Started](https://pris.ly/d/getting-started).
-    - Run `prisma db pull` to turn your database schema into a Prisma schema.
-    - Run `prisma generate` to generate the **Prisma Client**. You can then start querying your database.
+  - Set the `DATABASE_URL` in the `.env` file to point to your existing database. If your database has no tables yet, read [Getting Started](https://pris.ly/d/getting-started).
+  - Run `prisma db pull` to turn your database schema into a Prisma schema.
+  - Run `prisma generate` to generate the **Prisma Client**. You can then start querying your database.
 
-      ```bash
-      # Create a migration
-      npx prisma migrate dev --name init
-      ```
+    ```bash
+    # Create a migration
+    npx prisma migrate dev --name init
+    ```
 
 ##### UI Setup
 
@@ -146,8 +150,9 @@ touch middleware.ts lib/isValidPassword.ts
 
 #### Vercel CLI
 
-- Add `NEXT_PUBLIC_` prefix to environment variables exposed to the client
-- Run `vercel env add` to add environment variables
+- FML
+<!-- - Add `NEXT_PUBLIC_` prefix to environment variables exposed to the client
+- Run `vercel env add` to add environment variables -->
 
   ```bash
   npm i @vercel/speed-insights
@@ -183,13 +188,187 @@ touch middleware.ts lib/isValidPassword.ts
   ```bash
   npx prisma migrate dev --name init
   # npx prisma studio
+
+  rm -rf node_modules .vercel .next
+  npm install
+  npx prisma migrate deploy
+  npx prisma generate
   ```
 
----
+#### FUCK
 
-<!--
+- Testing SSL Connection using a PostgreSQL client:
+
+  ```bash
+  # Attempt to connect to database using SSL
+  psql "postgresql://neondb_owner:KOwd0pyv4ZkM@ep-bold-firefly-a61t9vcf.us-west-2.aws.neon.tech/neondb?sslmode=require"
+  ```
+
 ```bash
-npm i next-themes @tabler/icons-react
-touch components/theme-provider.tsx components/theme-toggle.tsx
+npm uninstall @prisma/client prisma
+npm i @prisma/client
+npm i prisma -D
+
+# genereate prisma client
+npx prisma generate
+
 ```
--->
+
+##### Plan A
+
+1. Create a New Next.js App
+
+2. Initialize Prisma with PostgreSQL
+
+   - Install Prisma and PostgreSQL Client
+   - Initialize Prisma
+   - Update `prisma/schema.prisma`
+   - Add `DATABASE_URL` Environment Variables to `.env`
+   - Run Prisma Migrate: `npx prisma migrate dev --name init`
+   - Generate Prisma Client: `npx prisma generate`
+
+3. Set environment variables in the Vercel Project Settings and `.env` by running `vercel env pull`
+
+4. Test... `npx prisma studio`...
+
+```bash
+# 1.
+npx create-next-app@latest mvp-app --typescript --tailwind --eslint
+cd mvp-app && code .
+
+# 2.
+npm install prisma @prisma/client
+npx prisma init
+```
+
+##### Plan B
+
+- Set Up PostgreSQL Database
+- Use [`pgloader`](https://github.com/dimitri/pgloader?tab=readme-ov-file#usage) to migrate **SQLite** database to **PostgreSQL**
+
+  ```bash
+  brew install pgloader
+
+  # datasource db: directUrl = env("DIRECT_URL")
+  # generator client: previewFeatures = ["driverAdapters"]
+  ```
+
+  ```bash
+  # repair db of corrupted
+  sqlite3 dev.db
+  sqlite> PRAGMA integrity_check;
+  # try to recover db
+  sqlite3 dev.db .dump > backup.sql
+  sqlite3 repaired.db < backup.sql
+  # migrate from sqlite to postgres
+  pgloader sqlite:///path/to/repaired.db postgresql://username:password@host:port/dbname
+  ```
+
+- Ensure your Prisma schema (schema.prisma) reflects the correct types and constraints for PostgreSQL
+
+##### Plan C
+
+```bash
+npm install @prisma/adapter-neon @neondatabase/serverless ws
+npm install @types/ws bufferutil --save-dev
+```
+
+<br />
+<br />
+<br />
+
+ugg
+
+```bash
+npm i
+npx prisma init --datasource-provider postgresql
+
+# Introspect your database
+npx prisma db pull
+# Generate the Prisma Client
+npx prisma generate
+# Create a baseline migration
+npx prisma migrate dev --name init
+
+# npx prisma migrate reset
+
+stripe listen --forward-to localhost:3000/webhooks/stripe
+npx prisma studio
+```
+
+```tsx
+export const metadata: Metadata = {
+  title: {
+    absolute: "Demo",
+  },
+  // title: {
+  //   template: "ㅜㅜ %s", // ㅠㅠ
+  //   default: "ㅜㅜ", // a default is required when creating a template
+  // },
+  description:
+    "User Management, Passwordless Authentication, Payment Processing, Transactional Emails",
+  keywords: [
+    "tannertanner",
+    "User Management",
+    "Passwordless Authentication",
+    "Payment Processing",
+    "Transactional Emails",
+  ],
+  // metadataBase: new URL("https://tannertanner.vercel.app"),
+  // alternates: {
+  //   canonical: "/",
+  //   languages: {
+  //     "en-US": "/en-US",
+  //   },
+  // },
+  // creator: "Tanner Tanner",
+  // formatDetection: {
+  //   email: false,
+  //   address: false,
+  //   telephone: false,
+  // },
+  // authors: [{ name: "Tanner", url: "https://tannertanner.me" }],
+  // referrer: "origin-when-cross-origin",
+  // generator: "Next.js",
+  // applicationName: "Demo",
+  openGraph: {
+    title: "Demo",
+    description:
+      "User Management, Passwordless Authentication, Payment Processing, Transactional Emails",
+    // url: "https://tannertanner.vercel.app",
+    siteName: "Demo",
+    // Must be an absolute URL
+    // images: [
+    //   {
+    //     url: "https://tannertanner.vercel.app/og.png",
+    //     width: 800,
+    //     height: 600,
+    //   },
+    //   {
+    //     url: "https://tannertanner.vercel.app/og-alt.png",
+    //     width: 1800,
+    //     height: 1600,
+    //     alt: "My custom alt",
+    //   },
+    // ],
+    // locale: "en_US",
+    // type: "website",
+  },
+};
+// export function generateViewport(): Viewport {
+//   return {
+//     themeColor: 'black',
+//   }
+// }
+// export const viewport: Viewport = {
+//   // colorScheme: 'dark',
+//   themeColor: [
+//     { media: '(prefers-color-scheme: light)', color: 'cyan' },
+//     { media: '(prefers-color-scheme: dark)', color: 'black' },
+//   ],
+//   width: 'device-width',
+//   initialScale: 1,
+//   maximumScale: 1,
+//   userScalable: false,
+// }
+```

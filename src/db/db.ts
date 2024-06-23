@@ -1,18 +1,35 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient as PrismaClientType } from ".prisma/client";
 
 const prismaClientSingleton = () => {
-  return new PrismaClient();
+  return new PrismaClientType();
 };
 
 declare global {
-  var prisma: undefined | ReturnType<typeof prismaClientSingleton>;
+  // eslint-disable-next-line no-var
+  var prisma: PrismaClientType | undefined;
 }
 
-const db = globalThis.prisma ?? prismaClientSingleton();
+const db = globalThis.prisma || prismaClientSingleton();
+
+if (process.env.NODE_ENV !== "production") globalThis.prisma = db;
 
 export default db;
 
-if (process.env.NODE_ENV !== "production") globalThis.prisma = db;
+// import { PrismaClient } from "@prisma/client";
+
+// const prismaClientSingleton = () => {
+//   return new PrismaClient();
+// };
+
+// declare global {
+//   var prisma: undefined | ReturnType<typeof prismaClientSingleton>;
+// }
+
+// const db = globalThis.prisma ?? prismaClientSingleton();
+
+// export default db;
+
+// if (process.env.NODE_ENV !== "production") globalThis.prisma = db;
 
 // import { PrismaClient } from "@prisma/client";
 
@@ -127,7 +144,3 @@ if (process.env.NODE_ENV !== "production") globalThis.prisma = db;
 // export default db;
 
 // if (process.env.NODE_ENV !== "production") globalThis.db = db;
-
-// npx ts-node test.ts
-// npx ts-node /tannertanner/src/db/test.ts
-// npx ts-node /tannertanner/src/db/test.ts

@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -20,8 +17,8 @@ model Product {
   isAvailableForPurchase Boolean                @default(true)
   createdAt              DateTime               @default(now())
   updatedAt              DateTime               @updatedAt
-  orders                 Order[]
   downloadVerifications  DownloadVerification[]
+  orders                 Order[]
 }
 
 model User {
@@ -37,11 +34,10 @@ model Order {
   pricePaidInCents Int
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
-
-  userId    String
-  productId String
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  product   Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+  userId           String
+  productId        String
+  product          Product  @relation(fields: [productId], references: [id])
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model DownloadVerification {

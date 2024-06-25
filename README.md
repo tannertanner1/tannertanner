@@ -296,6 +296,12 @@ stripe listen --forward-to localhost:3000/webhooks/stripe
 npx prisma studio
 ```
 
+```bash
+npx create-next-app@latest neon-drizzle-auth --typescript --tailwind --eslint
+cd neon-drizzle-auth && code .
+# npx shadcn-ui@latest init
+```
+
 ```tsx
 export const metadata: Metadata = {
   title: {

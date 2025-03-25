@@ -9,7 +9,24 @@ import {
 import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
 
-export function Sidebar() {
+export function Header() {
+  return (
+    <div className='relative flex flex-col'>
+      <header className='w-full py-4'>
+        <div className='relative mx-auto flex max-w-5xl items-center justify-between px-6'>
+          <div className='group'>
+            <Sidebar />
+          </div>
+          <div className='group'>
+            <Toggle />
+          </div>
+        </div>
+      </header>
+    </div>
+  )
+}
+
+function Sidebar() {
   const [isOpen, setOpen] = useState(true)
 
   return (
@@ -27,13 +44,13 @@ export function Sidebar() {
   )
 }
 
-export function Toggle() {
+function Toggle() {
   const { theme, setTheme } = useTheme()
 
   return (
     <button
       className={cn(
-        'text-primary relative overflow-hidden rounded-md bg-transparent opacity-0 transition-all transition-opacity duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] hover:opacity-100 active:-translate-y-1 active:scale-x-90 active:scale-y-110'
+        'text-primary relative overflow-hidden rounded-md bg-transparent opacity-0 duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] hover:opacity-100 active:-translate-y-1 active:scale-x-90 active:scale-y-110'
       )}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
@@ -47,22 +64,5 @@ export function Toggle() {
       />
       <span className='sr-only'>Toggle theme</span>
     </button>
-  )
-}
-
-export function Component() {
-  return (
-    <div className='relative flex flex-col'>
-      <header className='w-full py-6'>
-        <div className='relative mx-auto flex max-w-5xl items-center justify-between px-6'>
-          <div className='group'>
-            <Sidebar />
-          </div>
-          <div className='group'>
-            <Toggle />
-          </div>
-        </div>
-      </header>
-    </div>
   )
 }

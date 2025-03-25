@@ -11,7 +11,6 @@ git clone https://github.com/tannertanner1/tannertanner.git
 ```bash
 pnpm dlx shadcn@latest init
 pnpm add next-themes
-pnpm dlx shadcn@latest add sonner
 touch app/providers.tsx
 pnpm remove lucide-react
 pnpm add @tabler/icons-react

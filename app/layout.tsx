@@ -19,7 +19,21 @@ const fontMono = LXGW_WenKai_Mono_TC({
 
 export const metadata: Metadata = {
   title: 'tannertanner.me',
-  description: '@tannertanner1'
+  description: '@tannertanner1',
+  icons: { icon: [{ rel: 'icon', type: 'image/svg+xml', url: '/icon.svg' }] },
+  openGraph: {
+    title: 'tannertanner.me',
+    description: '@tannertanner1',
+    images: {
+      url: 'https://tannertanner.me/image.png', // Must be an absolute URL
+      alt: '',
+      width: 800,
+      height: 400
+    },
+    url: 'https://tannertanner.me',
+    siteName: 'tannertanner.me',
+    type: 'website'
+  }
 }
 
 export default function RootLayout({

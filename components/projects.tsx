@@ -32,7 +32,7 @@ export function Projects() {
                 href={project.url}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='hover:text-primary text-lg transition-colors'
+                className='text-lg'
               >
                 {project.title}
               </Link>
@@ -43,7 +43,7 @@ export function Projects() {
                 aria-label={`View code for ${project.title}`}
               >
                 <IconCode
-                  className='text-muted-foreground hover:text-primary h-5 w-5 transition-colors'
+                  className='text-muted-foreground h-5 w-5'
                   aria-hidden='true'
                 />
               </Link>

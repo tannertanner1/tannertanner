@@ -1,0 +1,20 @@
+export const config = {
+  name: 'Tanner',
+  description:
+    'Developer & Designer based in Tokyo, Japan. Building with React, TypeScript, and Next.js.',
+  username: 'tannertanner1',
+  domain: 'tannertanner.me',
+  url: 'https://tannertanner.me',
+  og: 'https://tannertanner.me/image.png', // Must be an absolute URL
+  github: 'https://github.com/tannertanner1',
+  email: 'tanner@tannertanner.me'
+}
+
+export type Config = typeof config
+
+/**
+ * @see https://developers.google.com/search/docs/appearance/title-link?hl=en
+ * @see https://developers.google.com/search/docs/appearance/snippet?hl=en#meta-descriptions
+ * @see https://og-playground.vercel.app/?share=tVdLTyQ3EP4rVq-ivdDGdvk52o202eSQQw6Rcoq4NEwPzKaZZmaaHRDiv-cru5vXAgJCxNh4XH7U46v6xlfVUT9vq1n1ab78frASYjtcdu3nqyseC3HSLo9Phpn4qJX66eNemdwt58PJg7n5cnvWNZeYXXTtxTTL41-Xm_ZoWPYryI767vx0NUmbbnm8-n1oT7csaldDu5lE3863w3Jx-bXH5Irvvy8-bI7-Od7056v5177rN5B_WCwWH1l4fX2w-pkHn7bfj0VZfnHarbafD6qTYTib7e_vdju5I9lvjveNUmofCw-qcen3Zbv7pb_AYiWU0FYpQUYdVHcsh4znp7niIkzeWbdYdh1mPuD0MpU1gk5nzXBShnAZVvxhPEnrvTDkZSRqHCnBrfxJo2JtZUxJaPJjN4oipZpI-miF9taVbpRpCrXR0iYjtLK6dFlWY9a72jnpvV3jm0pUGyWt0jVJxb2TSTcmQSe0aRNhWZIppnVto4wmYjY5GRSVE5uYtOCW3VZTlMnXRiqDDTpJExyvczXMJBVwVdChcdoIbmVPkMFq1igmQbq0IjEktWdHmIDTtDQGc9Jlxb2ONYyJqdEU4SAolvdoK8mwBM51uK50o0zBbF172Av1eI3B4eSpjtIbD0OD9V-Ml_ABd3mXwGojjIG1cI-RkcfjbUJLpwx2W2UFlEJMSl-kThJZtk-lPzVCFliAk3M0m-gEPmUl1iBulMJaG5kUIi7ZE1A9Eo5JTn-5FxmRjCQAQGHBmv2ML4bvERaKmiBIRh8b4JUYzDTuioRQOgitjiIACaUrQg-THWIVRQzGlK5IOA4JKCEtIKbSjZuCpEi1tAieTs6XrsgAGO0CImsiPBXgotwVoYZzTA2fmDUpBHjEkygIBVCSgr1YlBByCxhbTAFImAm6gXNGlOAkmbBIagXnIVaOh9gqtba1JO06eAo3Ke_X-aSiLOKeIM964374AychF6OHe5xrOI1E7kqEABoPy2VwWpiAiIz9FD8ySMUklSXeBYNLP0Gc3c7HeyDZ4XyDo5JODNcEq6N0xjZIZU7nCa04LSREH-m1BjZjBAwRH5NTHGFCXqTYwB2C2-0mggrApReBSrvJTcYP4qihBHCaNMKFmlFbnGQAFLg2NveDr2sgLQQLR8U1rA_QAcmCKxAn6ADQELkmwCBuY8YYZIwO0ls413qkJ3flONguKCHUsDT7ZMoBxAK4RZoE-NkZZA_aaJR0MeSU1LCVbRjzgMtBVMhIKzX2Wr5puogkRwRhsw7WAokEL6OQwv2aL0J5Daw49L7ZQcAZbglRkEX-567IUPJgAkyCukgHLtw3MliqERuPSMLz8AuAk_tbcQqoOg6FAXmKz2RWBKA1l0Q2DnqUvkihR4pc9TyAzUmEkmu5SLI7MEalDeANzpjJgcUEWA324jbVrxDyTr_OisBwqAduASw5kAaqIkvhLzJAh4cAXOBN_Ps0KnggwqM_8lM-5_X8FN-dn-xr-clxRbklKP8igjIvJKg7_BTegZ845A_4qXnATxnoMAJecgDemwkq6oir2FGRYCtX8VdS1P3gcFJaH1ClLJlHOAo59jRHIUue5qhS_d6TpBgDLyEp-whJDZmYuKw8Rkzx5cSE4URMWHpDTAyOTEzM208Qk32WmGDSc8TEefpqYop3eQln3vISR_z1vMS_WG55CVXjZbwElDzGS-EtvITJJ4mJM_gJYiq5-L8TE_PLm4iJEfIMMcV3ICb-Ff2fiSk_eKDeXVrKZe0HWppeW_vlvcfvOIw-7eMli__VXtWf8btzW82uqvxyq2baK7VXlSdbNYv8Zd4enh9Xs0XTbdu9qj3tvy3_ujzjJ_Gwy99w0ALv0N9OD9t5NRs25-31XjU0h1hx0nZdv-s33by6_hc
+ * @see https://github.com/shadcn-ui/ui/blob/074eed56057e1e1feacbac4c85d011d4ac8515e3/apps/v4/app/layout.tsx
+ */

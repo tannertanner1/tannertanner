@@ -6,18 +6,20 @@ import { Footer } from '@/components/footer'
 
 export default function Page() {
   return (
-    <div className='relative flex min-h-screen flex-col'>
-      <Header />
-      <main className='mx-auto w-full max-w-5xl flex-grow px-6'>
-        <div className='py-10'>
-          <div className='space-y-32'>
-            <Hero />
-            <Projects />
-            <Experience />
+    <div className='relative min-h-screen'>
+      <div className='inset-ring-background relative flex min-h-screen flex-col inset-ring'>
+        <Header />
+        <main className='mx-auto w-full max-w-5xl flex-grow px-6'>
+          <div className='py-10'>
+            <div className='space-y-32'>
+              <Hero />
+              <Projects />
+              <Experience />
+            </div>
           </div>
-        </div>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }

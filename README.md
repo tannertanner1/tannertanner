@@ -16,4 +16,6 @@ pnpm remove lucide-react
 pnpm add @tabler/icons-react
 pnpm add -D prettier prettier-plugin-tailwindcss
 touch .prettierrc
+
+# pnpm dlx shadcn@latest add --all --overwrite
 ```

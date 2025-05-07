@@ -34,15 +34,29 @@ export function Projects() {
               />
             </div>
             <div className='flex items-center justify-between'>
-              <Link
+              {/* <Link
                 href={project.url}
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-lg'
               >
                 {project.title}
-              </Link>
-              <Link
+              </Link> */}
+              <a
+                href={project.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-lg'
+              >
+                {project.title}
+              </a>
+              {/* <Link
+                href={project.github}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label={`View code for ${project.title}`}
+              > */}
+              <a
                 href={project.github}
                 target='_blank'
                 rel='noopener noreferrer'
@@ -61,7 +75,7 @@ export function Projects() {
                   className='text-muted-foreground h-5 w-5'
                   aria-hidden='true'
                 /> */}
-              </Link>
+              </a>
             </div>
             {/* <p className='text-muted-foreground'>{project.type}</p> */}
           </div>

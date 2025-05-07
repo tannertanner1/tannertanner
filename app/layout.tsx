@@ -6,13 +6,13 @@ import { cn } from '@/lib/utils'
 import { config } from '@/lib/config'
 
 const fontSans = Slackside_One({
-  variable: '--font-slackside-one',
+  variable: '--font-sans',
   weight: '400',
   subsets: ['latin'],
   display: 'swap'
 })
 const fontMono = LXGW_WenKai_Mono_TC({
-  variable: '--font-lxgw-wenkai-mono-tc',
+  variable: '--font-mono',
   weight: ['300', '400', '700'],
   subsets: ['latin'],
   display: 'swap'

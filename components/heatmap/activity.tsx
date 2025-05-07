@@ -111,7 +111,7 @@ export function Activity<T extends DataOptions>({
       }
     >
       <div className='w-full overflow-x-auto'>
-        <table className='w-max border-separate border-spacing-[var(--activity-grid-gap)]'>
+        <table className='w-max border-separate border-spacing-(--activity-grid-gap)'>
           <thead>
             <tr>
               <th />
@@ -119,7 +119,7 @@ export function Activity<T extends DataOptions>({
                 <th
                   key={index}
                   colSpan={header.span}
-                  className='text-left text-[length:var(--activity-grid-size)] leading-none font-normal'
+                  className='text-left text-(length:--activity-grid-size) leading-none font-normal'
                 >
                   {header.name}
                 </th>
@@ -132,7 +132,7 @@ export function Activity<T extends DataOptions>({
               return (
                 <tr key={dayIndex}>
                   {weekDays.includes(dayIndex) ? (
-                    <td className='p-0 text-[length:var(--activity-grid-size)] leading-none font-normal'>
+                    <td className='p-0 text-(length:--activity-grid-size) leading-none font-normal'>
                       {new Date(2024, 0, dayIndex).toLocaleString('default', {
                         weekday: 'short'
                       })}
@@ -146,7 +146,7 @@ export function Activity<T extends DataOptions>({
                       return (
                         <td
                           key={weekIndex}
-                          className='size-[var(--activity-grid-size)]'
+                          className='size-(--activity-grid-size)'
                         />
                       )
                     }
@@ -163,7 +163,7 @@ export function Activity<T extends DataOptions>({
                             asChild
                             suppressHydrationWarning
                           >
-                            <td className='border-border size-[var(--activity-grid-size)] rounded border'>
+                            <td className='border-border size-(--activity-grid-size) rounded border'>
                               <span className='sr-only'>{label}</span>
                             </td>
                           </TooltipTrigger>
@@ -178,18 +178,18 @@ export function Activity<T extends DataOptions>({
           </tbody>
         </table>
       </div>
-      <div className='flex justify-end gap-[var(--activity-grid-gap)]'>
-        <div className='text-muted-foreground/70 mr-1 text-[length:var(--activity-grid-size)] leading-none font-light tracking-tighter'>
+      <div className='flex justify-end gap-(--activity-grid-gap)'>
+        <div className='text-muted-foreground/70 mr-1 text-(length:--activity-grid-size) leading-none font-light tracking-tighter'>
           Less
         </div>
         {Object.entries(colors).map(([key, color]) => (
           <div
             key={key}
-            className='border-border size-[var(--activity-grid-size)] rounded border'
+            className='border-border size-(--activity-grid-size) rounded border'
             style={{ backgroundColor: color as string }}
           />
         ))}
-        <div className='text-muted-foreground/70 ml-1 text-[length:var(--activity-grid-size)] leading-none font-light tracking-tighter'>
+        <div className='text-muted-foreground/70 ml-1 text-(length:--activity-grid-size) leading-none font-light tracking-tighter'>
           More
         </div>
       </div>

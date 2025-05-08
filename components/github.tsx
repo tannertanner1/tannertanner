@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   animate,
@@ -7,12 +7,12 @@ import {
   useMotionValue,
   useMotionValueEvent,
   useScroll,
-  useTransform
-} from 'motion/react'
-import { cn } from '@/lib/utils'
-import { useEffect, useRef, useState } from 'react'
+  useTransform,
+} from "motion/react"
+import { cn } from "@/lib/utils"
+import { useEffect, useRef, useState } from "react"
 
-export function Github() {
+function Github() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollXProgress } = useScroll({ container: containerRef })
   const maskImage = useScrollOverflowMask(scrollXProgress)
@@ -26,7 +26,7 @@ export function Github() {
   const monthsX = useTransform(
     scrollXProgress,
     [0, 1],
-    ['0%', `-${((data.totalColumns - visibleColumns) * 100) / visibleColumns}%`]
+    ["0%", `-${((data.totalColumns - visibleColumns) * 100) / visibleColumns}%`]
   )
 
   useEffect(() => {
@@ -36,19 +36,19 @@ export function Github() {
   }, [])
 
   return (
-    <div className='w-full max-w-[480px]'>
-      <div className='relative overflow-hidden rounded-3xl p-6'>
-        <div className='relative mb-2 h-6 overflow-hidden'>
-          <motion.div className='absolute flex w-full' style={{ x: monthsX }}>
+    <div className="w-full max-w-[480px]">
+      <div className="relative overflow-hidden rounded-3xl p-6">
+        <div className="relative mb-2 h-6 overflow-hidden">
+          <motion.div className="absolute flex w-full" style={{ x: monthsX }}>
             {data.months.map(({ name, startColumn }, i) => (
               <div
                 key={`${name}-${i}`}
-                className='text-primary absolute text-sm font-medium'
+                className="text-primary absolute text-sm font-medium"
                 style={{
                   left: `${(startColumn * 100) / visibleColumns}%`,
-                  width: '100px',
-                  marginLeft: '-50px',
-                  textAlign: 'center'
+                  width: "100px",
+                  marginLeft: "-50px",
+                  textAlign: "center",
                 }}
               >
                 {name}
@@ -59,17 +59,17 @@ export function Github() {
 
         <motion.div
           ref={containerRef}
-          className='scrollbar-none overflow-x-scroll'
+          className="scrollbar-none overflow-x-scroll"
           style={{
             maskImage,
-            WebkitMaskImage: maskImage
+            WebkitMaskImage: maskImage,
           }}
         >
           <div
-            className='grid grid-rows-7 gap-1'
+            className="grid grid-rows-7 gap-1"
             style={{
               gridTemplateColumns: `repeat(${data.totalColumns}, 1fr)`,
-              width: `${(data.totalColumns / visibleColumns) * 100}%`
+              width: `${(data.totalColumns / visibleColumns) * 100}%`,
             }}
           >
             {data.contributions.map((row, rowIndex) =>
@@ -77,12 +77,12 @@ export function Github() {
                 <div
                   key={`${rowIndex}-${colIndex}`}
                   className={cn(
-                    'aspect-square rounded-sm',
-                    value === null && 'bg-transparent',
-                    value === 0 && 'bg-zinc-950/10 dark:bg-zinc-50/10',
-                    value === 1 && 'bg-zinc-950/25 dark:bg-zinc-50/25',
-                    value === 2 && 'bg-zinc-950/50 dark:bg-zinc-50/50',
-                    value === 3 && 'bg-zinc-950/75 dark:bg-zinc-50/75'
+                    "aspect-square rounded-sm",
+                    value === null && "bg-transparent",
+                    value === 0 && "bg-zinc-950/10 dark:bg-zinc-50/10",
+                    value === 1 && "bg-zinc-950/25 dark:bg-zinc-50/25",
+                    value === 2 && "bg-zinc-950/50 dark:bg-zinc-50/50",
+                    value === 3 && "bg-zinc-950/75 dark:bg-zinc-50/75"
                   )}
                 />
               ))
@@ -90,21 +90,21 @@ export function Github() {
           </div>
         </motion.div>
 
-        <div className='mt-4 flex items-center justify-end gap-2 text-sm'>
-          <span className='text-primary'>Less</span>
-          {[0, 1, 2, 3].map(level => (
+        <div className="mt-4 flex items-center justify-end gap-2 text-sm">
+          <span className="text-primary">Less</span>
+          {[0, 1, 2, 3].map((level) => (
             <div
               key={level}
               className={cn(
-                'h-3 w-3 rounded-sm',
-                level === 0 && 'bg-zinc-950/10 dark:bg-zinc-50/10',
-                level === 1 && 'bg-zinc-950/25 dark:bg-zinc-50/25',
-                level === 2 && 'bg-zinc-950/50 dark:bg-zinc-50/50',
-                level === 3 && 'bg-zinc-950/75 dark:bg-zinc-50/75'
+                "h-3 w-3 rounded-sm",
+                level === 0 && "bg-zinc-950/10 dark:bg-zinc-50/10",
+                level === 1 && "bg-zinc-950/25 dark:bg-zinc-50/25",
+                level === 2 && "bg-zinc-950/50 dark:bg-zinc-50/50",
+                level === 3 && "bg-zinc-950/75 dark:bg-zinc-50/75"
               )}
             />
           ))}
-          <span className='text-primary'>More</span>
+          <span className="text-primary">More</span>
         </div>
       </div>
     </div>
@@ -116,7 +116,7 @@ function useScrollOverflowMask(scrollXProgress: MotionValue<number>) {
     `linear-gradient(90deg, #000, #000 0%, #000 80%, #0000)`
   )
 
-  useMotionValueEvent(scrollXProgress, 'change', value => {
+  useMotionValueEvent(scrollXProgress, "change", (value) => {
     if (value === 0) {
       animate(
         maskImage,
@@ -144,7 +144,7 @@ function useScrollOverflowMask(scrollXProgress: MotionValue<number>) {
 function generateContributionData() {
   const now = new Date()
   const pst = new Date(
-    now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
+    now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
   )
   const startDate = new Date(pst)
   startDate.setFullYear(startDate.getFullYear() - 1)
@@ -177,8 +177,8 @@ function generateContributionData() {
       !(month === currentMonth && year === currentYear - 1)
     ) {
       months.push({
-        name: currentDate.toLocaleString('default', { month: 'short' }),
-        startColumn: weekIndex
+        name: currentDate.toLocaleString("default", { month: "short" }),
+        startColumn: weekIndex,
       })
       lastMonth = month
     }
@@ -202,9 +202,4 @@ function generateContributionData() {
   return { contributions, months, totalColumns: weekIndex }
 }
 
-/**
- * @see https://examples.motion.dev/react/scroll-container
- * @see https://craft.mxkaske.dev/post/activity-calendar
- * @see https://github.com/mxkaske/mxkaske.dev/blob/main/components/craft/activity-calendar/activity-calendar.tsx
- * @see https://docs.github.com/en/rest/commits/comments?apiVersion=2022-11-28#list-commit-comments
- */
+export { Github }

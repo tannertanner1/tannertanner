@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+public/
+*.config.js
+*.config.mjs
+
+_private
+components/ui/**/*

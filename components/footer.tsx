@@ -69,21 +69,21 @@ function Github({
   hoverIcon: React.ReactNode
   ariaLabel: string
 }) {
-  const [isHovering, setHovering] = useState(false)
-
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-muted-foreground flex cursor-pointer items-center"
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
+      className="text-muted-foreground group flex cursor-pointer items-center"
       aria-label={ariaLabel}
     >
       <span className="relative inline-flex h-4 w-4 items-center justify-center rounded-full">
-        <Icon isVisible={!isHovering}>{defaultIcon}</Icon>
-        <Icon isVisible={isHovering}>{hoverIcon}</Icon>
+        <span className="absolute transition-all duration-200 group-hover:scale-50 group-hover:opacity-0">
+          {defaultIcon}
+        </span>
+        <span className="absolute scale-50 opacity-0 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100">
+          {hoverIcon}
+        </span>
       </span>
       <span className="-ml-0.5 text-sm">{text}</span>
     </a>

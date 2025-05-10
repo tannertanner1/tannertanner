@@ -22,11 +22,11 @@ function Projects() {
   return (
     <section id="projects">
       <h2 className="text-4xl font-bold">{data.heading}</h2>
-      <div className="mt-8 grid grid-cols-1 gap-16 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-16 @xl:grid-cols-2">
         {data.items.map((project) => (
           <div key={project.title} className="space-y-4">
             {/* Placeholder */}
-            <div className="border-border inset-shadow-md flex h-48 w-full items-center justify-center rounded-lg border inset-shadow-black/10 md:h-56 dark:inset-shadow-white/5">
+            <div className="border-border inset-shadow-md flex h-48 w-full items-center justify-center rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5">
               <IconBorderCorners
                 className="text-accent h-16 w-16"
                 aria-hidden="true"

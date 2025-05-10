@@ -9,7 +9,7 @@ export default function Page() {
       <div className="inset-ring-background relative flex min-h-screen flex-col inset-ring">
         <main className="mx-auto w-full max-w-5xl grow px-6 pt-10">
           <div className="py-10">
-            <div className="space-y-32">
+            <div className="@container space-y-32">
               <Hero />
               <Projects />
               <Experience />

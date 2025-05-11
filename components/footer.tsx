@@ -1,6 +1,5 @@
 "use client"
 
-import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import { motion } from "motion/react"
 import {
@@ -14,7 +13,7 @@ import { config } from "@/lib/config"
 function Footer() {
   return (
     <footer className="w-full py-4">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6">
+      <div className="mx-auto flex max-w-5xl items-center justify-between">
         <Github
           href={config.github}
           text={config.username}

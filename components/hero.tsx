@@ -90,9 +90,9 @@ function Tech({ className }: { className?: string }) {
 
 function Hero() {
   return (
-    <section id="hero" className="pt-6">
-      <div className="relative pb-64 md:grid md:grid-cols-2 md:gap-8 md:pb-0">
-        <div className="mb-16 max-w-md md:mb-0">
+    <section id="hero" className="pt-16">
+      <div className="relative pb-64 @3xl:grid @3xl:grid-cols-2 @3xl:gap-8 @3xl:pb-0">
+        <div className="mb-16 max-w-md @3xl:mb-0">
           <Name />
           {/* <h1 className="text-4xl font-bold">{data.name}</h1> */}
           <h2 className="text-muted-foreground mt-2 text-xl">{data.title}</h2>
@@ -104,7 +104,7 @@ function Hero() {
           </div>
         </div>
         {/* Placeholder */}
-        <div className="border-border inset-shadow-md absolute bottom-0 left-1/2 flex h-64 w-64 -translate-x-1/2 items-center justify-center rounded-full border inset-shadow-black/10 md:relative md:bottom-auto md:left-auto md:translate-x-0 md:justify-self-end dark:inset-shadow-white/5">
+        <div className="border-border inset-shadow-md absolute bottom-0 left-1/2 flex h-64 w-64 -translate-x-1/2 items-center justify-center rounded-full border inset-shadow-black/10 @3xl:relative @3xl:bottom-auto @3xl:left-auto @3xl:translate-x-0 @3xl:justify-self-end dark:inset-shadow-white/5">
           <IconCircleDashed
             className="text-accent h-16 w-16"
             aria-hidden="true"

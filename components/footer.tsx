@@ -12,21 +12,19 @@ import { config } from "@/lib/config"
 
 function Footer() {
   return (
-    <footer className="w-full py-4">
-      <div className="mx-auto flex max-w-5xl items-center justify-between">
-        <Github
-          href={config.github}
-          text={config.username}
-          defaultIcon={<IconAt className="h-2.5 w-2.5" />}
-          hoverIcon={<IconArrowUpRight className="h-2.5 w-2.5" />}
-          ariaLabel={`Visit ${config.username}'s GitHub profile`}
-        />
-        <Email
-          textToCopy={config.email}
-          displayText={config.domain}
-          ariaLabel={`Copy email address ${config.email} to clipboard`}
-        />
-      </div>
+    <footer className="flex items-center justify-between py-4">
+      <Github
+        href={config.github}
+        text={config.username}
+        defaultIcon={<IconAt className="h-2.5 w-2.5" />}
+        hoverIcon={<IconArrowUpRight className="h-2.5 w-2.5" />}
+        ariaLabel={`Visit ${config.username}'s GitHub profile`}
+      />
+      <Email
+        textToCopy={config.email}
+        displayText={config.domain}
+        ariaLabel={`Copy email address ${config.email} to clipboard`}
+      />
     </footer>
   )
 }

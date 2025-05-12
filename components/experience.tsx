@@ -16,20 +16,20 @@ const data = {
 
 function Experience() {
   return (
-    <section id="experience" className="pb-6">
+    <section id="experience" className="pb-10">
       <h2 className="text-4xl font-bold">{data.heading}</h2>
-      <div className="mt-8 grid grid-cols-1 gap-16">
-        {data.items.map((job) => (
+      <div className="mt-8 grid grid-cols-1 gap-8">
+        {data.items.map((item) => (
           <div
-            key={job.title}
-            className="grid grid-cols-1 gap-2 md:grid-cols-[1fr_auto]"
+            key={item.title}
+            className="grid grid-cols-1 gap-2 @3xl:grid-cols-[1fr_auto] @3xl:items-baseline"
           >
             <div className="space-y-2">
-              <h3 className="text-2xl">{job.title}</h3>
-              <p className="text-muted-foreground">{job.company}</p>
+              <h3 className="text-2xl">{item.title}</h3>
+              <p className="text-muted-foreground">{item.company}</p>
             </div>
-            <p className="text-muted-foreground md:self-start md:text-right">
-              {job.period}
+            <p className="text-muted-foreground text-sm @3xl:flex @3xl:items-baseline @3xl:justify-end @3xl:text-base">
+              {item.period}
             </p>
           </div>
         ))}

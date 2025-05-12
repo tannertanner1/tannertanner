@@ -22,7 +22,7 @@ function Projects() {
   return (
     <section id="projects">
       <h2 className="text-4xl font-bold">{data.heading}</h2>
-      <div className="mt-8 grid grid-cols-1 gap-16 @xl:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-8 @xl:grid-cols-2">
         {data.items.map((project) => (
           <div key={project.title} className="space-y-4">
             {/* Placeholder */}

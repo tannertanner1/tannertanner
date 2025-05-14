@@ -48,10 +48,7 @@ function Container({
   return (
     <div
       ref={containerRef}
-      className={cn(
-        "relative flex min-h-screen flex-col overflow-hidden",
-        className
-      )}
+      className={cn("flex flex-col overflow-hidden", className)}
       style={{
         height: isMobile ? `${viewportHeight}px` : "100vh",
         maxHeight: isMobile ? `${viewportHeight}px` : "100vh",

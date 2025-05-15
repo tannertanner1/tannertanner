@@ -28,7 +28,8 @@ function Projects() {
             {/* Placeholder */}
             <div className="border-border inset-shadow-md flex h-48 w-full items-center justify-center rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5">
               <IconBorderCorners
-                className="text-accent dark:text-primary/50 h-16 w-16"
+                // className="text-accent dark:text-primary/50 h-16 w-16"
+                className="text-secondary/90 h-16 w-16"
                 aria-hidden="true"
               />
             </div>

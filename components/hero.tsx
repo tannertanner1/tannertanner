@@ -77,7 +77,7 @@ function Tech({ className }: { className?: string }) {
               <Badge
                 variant="secondary"
                 // "className="bg-[#e8eaed] text-[#3c4043] transition-colors duration-300 group-hover:bg-[#3c4043] group-hover:text-[#e8eaed] "dark:bg-[#3c4043] dark:text-[#e8eaed] dark:group-hover:bg-[#e8eaed] dark:group-hover:text-[#3c4043]"
-                className="text-primary bg-[#e8eaed] dark:bg-[#e8eaed]/50"
+                // className="text-primary bg-[#e8eaed] dark:bg-[#e8eaed]/50"
               >
                 {tech.name}
               </Badge>
@@ -107,7 +107,8 @@ function Hero() {
         {/* Placeholder */}
         <div className="border-border inset-shadow-md absolute bottom-0 left-1/2 flex h-64 w-64 -translate-x-1/2 items-center justify-center rounded-full border inset-shadow-black/10 @3xl:relative @3xl:bottom-auto @3xl:left-auto @3xl:translate-x-0 @3xl:justify-self-end dark:inset-shadow-white/5">
           <IconCircleDashed
-            className="text-accent dark:text-primary/50 h-16 w-16"
+            // className="text-accent dark:text-primary/50 h-16 w-16"
+            className="text-secondary/90 h-16 w-16"
             aria-hidden="true"
           />
         </div>

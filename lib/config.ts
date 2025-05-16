@@ -1,5 +1,5 @@
 const config = {
-  name: "@tannertanner1",
+  name: "Tanner",
   description:
     "Developer & Designer based in Tokyo, Japan. Building with React, TypeScript, and Next.js.",
   username: "tannertanner1",

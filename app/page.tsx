@@ -9,7 +9,7 @@ export default function Page() {
     <main className="relative mx-auto w-full max-w-5xl grow px-4">
       <div className="space-y-16">
         <Hero />
-        {/* <Activity /> */}
+        <Activity />
         <Projects />
         <Experience />
       </div>

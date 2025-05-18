@@ -56,7 +56,7 @@ const data = {
       { name: "motion", url: "https://motion.dev/" },
       { name: "shadcn", url: "https://ui.shadcn.com/" },
       { name: "drizzle", url: "https://orm.drizzle.team/" },
-      { name: "postgres", url: "https://neon.tech/" },
+      { name: "postgres", url: "https://www.postgresql.org/" },
     ],
   ],
 }

@@ -1,152 +1,144 @@
 "use client"
 
-import { Suspense, useRef } from "react"
+import { Suspense } from "react"
 import useSWR from "swr"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Skeleton } from "@/components/ui/skeleton"
-import { cn } from "@/lib/utils"
 
-type ActivityLevel = 0 | 1 | 2 | 3 | 4
-
-interface ContributionDay {
-  date: string
-  count: number
-  level: ActivityLevel
-}
-
-interface GitHubApiResponse {
-  data: Record<string, number>
-}
+// Increased cell size and reduced gap
+const CELL_SIZE = "1.0625rem"
+const CELL_GAP = "0.0625rem"
 
 const fetcher = (url: string) =>
   fetch(url)
-    .then((res) => {
-      if (!res.ok) throw new Error("Failed to fetch")
-      return res.json()
-    })
+    .then((res) => (res.ok ? res.json() : { data: {} }))
     .catch(() => ({ data: {} }))
 
+function getActivityLevel(count: number): 0 | 1 | 2 | 3 | 4 {
+  if (count === 0) return 0
+  if (count === 1) return 1
+  if (count <= 3) return 2
+  if (count <= 6) return 3
+  return 4
+}
+
 function ActivityContent() {
-  const scrollAreaRef = useRef<HTMLDivElement>(null)
-  const { data: result } = useSWR<GitHubApiResponse>("/api", fetcher, {
-    suspense: true,
-    revalidateOnFocus: false,
-    dedupingInterval: 60000,
-    fallbackData: { data: {} },
-  })
-
-  const contributionData = processGitHubData(result?.data || {})
-
-  // Scroll to most recent column once loaded
-  if (contributionData.length > 0 && scrollAreaRef.current) {
-    setTimeout(() => {
-      const viewport = scrollAreaRef.current?.querySelector(
-        "[data-radix-scroll-area-viewport]"
-      )
-      if (viewport) {
-        viewport.scrollLeft = viewport.scrollWidth
-      }
-    }, 100)
-  }
-
-  function processGitHubData(
-    contributions: Record<string, number>
-  ): ContributionDay[][] {
-    const result: ContributionDay[][] = []
-    const today = new Date()
-
-    const startDate = new Date(2025, 0, 1)
-
-    // Find the first Sunday before or on startDate
-    const firstSunday = new Date(startDate)
-    while (firstSunday.getDay() !== 0) {
-      firstSunday.setDate(firstSunday.getDate() - 1)
+  const { data: result } = useSWR<{ data: Record<string, number> }>(
+    "/api",
+    fetcher,
+    {
+      suspense: true,
+      revalidateOnFocus: false,
+      dedupingInterval: 60000,
+      fallbackData: { data: {} },
     }
+  )
 
-    const currentDate = new Date(firstSunday)
+  // Generate days grid for 2025
+  const contributionData = generateDaysGrid(result?.data || {})
 
-    while (currentDate <= today) {
-      const week: ContributionDay[] = []
-
-      for (let i = 0; i < 7; i++) {
-        const date = new Date(currentDate)
-        const dateString = date.toISOString().split("T")[0]
-        const count = contributions[dateString] || 0
-
-        // Map count to GitHub-style activity level (0-4)
-        let level: ActivityLevel = 0
-        if (count === 0) level = 0
-        else if (count === 1) level = 1
-        else if (count <= 3) level = 2
-        else if (count <= 6) level = 3
-        else level = 4
-
-        week.push({ date: dateString, count, level })
-        currentDate.setDate(currentDate.getDate() + 1)
-      }
-
-      result.push(week)
-    }
-
-    return result
-  }
-
-  function formatDate(dateString: string): string {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-  }
+  // Calculate total contributions
+  const totalContributions = Object.entries(result?.data || {})
+    .filter(([date]) => date.startsWith("2025-"))
+    .reduce((sum, [, count]) => sum + count, 0)
 
   return (
-    <div className="border-border overflow-hidden rounded-2xl border">
-      <ScrollArea
-        ref={scrollAreaRef}
-        className="w-full [&_[data-slot=scroll-area-thumb]]:bg-transparent"
-      >
-        <div className="flex gap-1 p-4">
-          {contributionData.map((week, weekIndex) => (
-            <div key={weekIndex} className="flex flex-col gap-1">
-              {week.map((day) => (
-                <div
-                  key={day.date}
-                  className={cn(
-                    "h-3.5 w-3.5 rounded-sm",
-                    day.level === 0 && "bg-[var(--activity-0)]",
-                    day.level === 1 && "bg-[var(--activity-1)]",
-                    day.level === 2 && "bg-[var(--activity-2)]",
-                    day.level === 3 && "bg-[var(--activity-3)]",
-                    day.level === 4 && "bg-[var(--activity-5)]"
-                  )}
-                  title={`${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`}
-                />
-              ))}
-            </div>
-          ))}
+    <div className="flex flex-col">
+      <div className="border-border overflow-hidden rounded-2xl border">
+        <ScrollArea className="w-full [&_[data-slot=scroll-area-thumb]]:bg-transparent">
+          <div className="flex justify-center p-5" style={{ gap: CELL_GAP }}>
+            {contributionData.map((week, weekIndex) => (
+              <div
+                key={weekIndex}
+                className="flex flex-col"
+                style={{ gap: CELL_GAP }}
+              >
+                {week.map((day, dayIndex) => {
+                  // Don't render cells for dates outside 2025
+                  if (!day.isInYear) {
+                    return (
+                      <div
+                        key={`empty-${weekIndex}-${dayIndex}`}
+                        style={{
+                          width: CELL_SIZE,
+                          height: CELL_SIZE,
+                        }}
+                      />
+                    )
+                  }
+
+                  return (
+                    <div
+                      key={day.date || `empty-${weekIndex}-${dayIndex}`}
+                      className="rounded-sm"
+                      style={{
+                        width: CELL_SIZE,
+                        height: CELL_SIZE,
+                        backgroundColor: `var(--activity-${day.level})`,
+                      }}
+                      title={
+                        day.date
+                          ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`
+                          : ""
+                      }
+                    />
+                  )
+                })}
+              </div>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" className="invisible" />
+        </ScrollArea>
+      </div>
+
+      <div className="mt-2 flex items-baseline justify-between text-sm">
+        <div>{totalContributions} contributions in 2025</div>
+        <div className="text-muted-foreground hidden items-center gap-2 @xl:flex">
+          <span>Less</span>
+          <div className="flex gap-1">
+            {[0, 1, 2, 3, 4].map((level) => (
+              <div
+                key={level}
+                className="rounded-sm"
+                style={{
+                  width: "12px",
+                  height: "12px",
+                  backgroundColor: `var(--activity-${level})`,
+                }}
+              />
+            ))}
+          </div>
+          <span>More</span>
         </div>
-        <ScrollBar orientation="horizontal" className="invisible" />
-      </ScrollArea>
+      </div>
     </div>
   )
 }
 
 function ActivitySkeleton() {
   return (
-    <div className="border-border overflow-hidden rounded-2xl border p-4">
-      <div className="flex gap-1">
-        {Array.from({ length: 20 }).map((_, weekIndex) => (
-          <div key={weekIndex} className="flex flex-col gap-1">
-            {Array.from({ length: 7 }).map((_, dayIndex) => (
-              <Skeleton
-                key={`${weekIndex}-${dayIndex}`}
-                className="h-3.5 w-3.5 rounded-sm opacity-30"
-              />
-            ))}
-          </div>
-        ))}
+    <div className="flex flex-col">
+      <div className="border-border overflow-hidden rounded-2xl border p-5">
+        <div className="flex justify-center gap-1">
+          {Array.from({ length: 20 }).map((_, weekIndex) => (
+            <div key={weekIndex} className="flex flex-col gap-1">
+              {Array.from({ length: 7 }).map((_, dayIndex) => (
+                <Skeleton
+                  key={`${weekIndex}-${dayIndex}`}
+                  className="rounded-sm opacity-30"
+                  style={{
+                    width: CELL_SIZE,
+                    height: CELL_SIZE,
+                  }}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-2 flex items-baseline justify-between">
+        <Skeleton className="h-4 w-40" />
+        <Skeleton className="hidden h-4 w-32 @xl:block" />
       </div>
     </div>
   )
@@ -163,4 +155,116 @@ export function Activity() {
       </div>
     </section>
   )
+}
+
+// Helper functions
+function formatDate(dateString: string): string {
+  if (!dateString) return ""
+  const [year, month, day] = dateString.split("-").map(Number)
+  const date = new Date(year, month - 1, day)
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
+function generateDaysGrid(contributions: Record<string, number>) {
+  // Create an array of all dates in 2025
+  const days2025 = Array.from({ length: 12 }, (_, month) => {
+    const daysInMonth = new Date(2025, month + 1, 0).getDate()
+    return Array.from({ length: daysInMonth }, (_, day) => {
+      const date = `2025-${String(month + 1).padStart(2, "0")}-${String(day + 1).padStart(2, "0")}`
+      const count = contributions[date] || 0
+      return {
+        date,
+        count,
+        level: getActivityLevel(count),
+        isInYear: true,
+      }
+    })
+  }).flat()
+
+  // Get the day of week for January 1, 2025
+  const jan1DayOfWeek = new Date(2025, 0, 1).getDay()
+
+  // Create grid with weeks as columns
+  const grid: Array<
+    Array<{
+      date: string
+      count: number
+      level: 0 | 1 | 2 | 3 | 4
+      isInYear: boolean
+    }>
+  > = []
+
+  // Create first week with empty spaces before January 1
+  let currentWeek = Array(jan1DayOfWeek).fill({
+    date: "",
+    count: 0,
+    level: 0,
+    isInYear: false,
+  })
+
+  // Add days to the grid
+  let dayIndex = 0
+  while (dayIndex < days2025.length) {
+    // Complete the current week
+    while (currentWeek.length < 7 && dayIndex < days2025.length) {
+      currentWeek.push(days2025[dayIndex++])
+    }
+
+    // Add the week to the grid
+    grid.push([...currentWeek])
+
+    // Start a new week
+    currentWeek = []
+
+    // Add days to the new week
+    while (currentWeek.length < 7 && dayIndex < days2025.length) {
+      currentWeek.push(days2025[dayIndex++])
+    }
+  }
+
+  // If the last week is incomplete, add empty cells
+  while (currentWeek.length < 7) {
+    currentWeek.push({
+      date: "",
+      count: 0,
+      level: 0,
+      isInYear: false,
+    })
+  }
+
+  // Add the last week if it's not empty
+  if (currentWeek.length > 0) {
+    grid.push([...currentWeek])
+  }
+
+  // Transpose the grid so weeks are columns
+  const transposedGrid: Array<
+    Array<{
+      date: string
+      count: number
+      level: 0 | 1 | 2 | 3 | 4
+      isInYear: boolean
+    }>
+  > = []
+
+  // Initialize columns
+  for (let weekIndex = 0; weekIndex < grid.length; weekIndex++) {
+    transposedGrid.push([])
+  }
+
+  // Fill columns
+  for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+    for (let weekIndex = 0; weekIndex < grid.length; weekIndex++) {
+      if (grid[weekIndex][dayOfWeek]) {
+        transposedGrid[weekIndex].push(grid[weekIndex][dayOfWeek])
+      }
+    }
+  }
+
+  return transposedGrid
 }

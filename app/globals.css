@@ -38,12 +38,21 @@
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
 
-  --activity-0: oklch(0.9 0 0);
-  --activity-1: oklch(0.75 0 0);
-  --activity-2: oklch(0.6 0 0);
-  --activity-3: oklch(0.45 0 0);
-  --activity-4: oklch(0.3 0 0);
-  --activity-5: oklch(0.15 0 0);
+  --activity-0: #eaedf1;
+  --activity-1: #c9cdd2;
+  --activity-2: #a5aaaf;
+  --activity-3: #7d8287;
+  --activity-4: #4d5156;
+  /* --activity-0: #f4f4f5;
+  --activity-1: #a1a1aa;
+  --activity-2: #71717a;
+  --activity-3: #3f3f46;
+  --activity-4: #000000; */
+  /* --activity-0: #eff2f5;
+  --activity-1: #adeebc;
+  --activity-2: #4ac26c;
+  --activity-3: #2da44e;
+  --activity-4: #116329; */
 
   /* Layout */
   --header-height: 3rem;
@@ -104,12 +113,21 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
 
-  --activity-0: oklch(0.15 0 0);
-  --activity-1: oklch(0.3 0 0);
-  --activity-2: oklch(0.45 0 0);
-  --activity-3: oklch(0.6 0 0);
-  --activity-4: oklch(0.75 0 0);
-  --activity-5: oklch(0.9 0 0);
+  --activity-0: #2d2d30;
+  --activity-1: #484a4d;
+  --activity-2: #71757a;
+  --activity-3: #9da0a4;
+  --activity-4: #c8ccd0;
+  /* --activity-0: #1f1f22;
+  --activity-1: #27282d;
+  --activity-2: #71717a;
+  --activity-3: #a1a1aa;
+  --activity-4: #ffffff; */
+  /* --activity-0: #151b23;
+  --activity-1: #023a15;
+  --activity-2: #196c2f;
+  --activity-3: #2ea043;
+  --activity-4: #56d364; */
 }
 
 @theme inline {

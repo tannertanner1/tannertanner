@@ -4,8 +4,8 @@ import { Suspense } from "react"
 import useSWR from "swr"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Skeleton } from "@/components/ui/skeleton"
+import { config } from "@/lib/config"
 
-// Increased cell size and reduced gap
 const CELL_SIZE = "1.0625rem"
 const CELL_GAP = "0.0625rem"
 
@@ -44,52 +44,63 @@ function ActivityContent() {
 
   return (
     <div className="flex flex-col">
-      <div className="border-border overflow-hidden rounded-2xl border">
-        <ScrollArea className="w-full [&_[data-slot=scroll-area-thumb]]:bg-transparent">
-          <div className="flex justify-center p-5" style={{ gap: CELL_GAP }}>
-            {contributionData.map((week, weekIndex) => (
-              <div
-                key={weekIndex}
-                className="flex flex-col"
-                style={{ gap: CELL_GAP }}
-              >
-                {week.map((day, dayIndex) => {
-                  // Don't render cells for dates outside 2025
-                  if (!day.isInYear) {
+      <a
+        href={config.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="focus-visible:ring-ring block rounded-2xl transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+        aria-label="View GitHub profile"
+      >
+        <div className="border-border overflow-hidden rounded-2xl border">
+          <ScrollArea className="w-full [&_[data-slot=scroll-area-thumb]]:bg-transparent">
+            <div
+              className="flex w-full justify-center p-6"
+              style={{ gap: CELL_GAP }}
+            >
+              {contributionData.map((week, weekIndex) => (
+                <div
+                  key={weekIndex}
+                  className="flex flex-col"
+                  style={{ gap: CELL_GAP }}
+                >
+                  {week.map((day, dayIndex) => {
+                    // Don't render cells for dates outside 2025
+                    if (!day.isInYear) {
+                      return (
+                        <div
+                          key={`empty-${weekIndex}-${dayIndex}`}
+                          style={{
+                            width: CELL_SIZE,
+                            height: CELL_SIZE,
+                          }}
+                        />
+                      )
+                    }
+
                     return (
                       <div
-                        key={`empty-${weekIndex}-${dayIndex}`}
+                        key={day.date || `empty-${weekIndex}-${dayIndex}`}
+                        className="rounded-sm"
                         style={{
                           width: CELL_SIZE,
                           height: CELL_SIZE,
+                          backgroundColor: `var(--activity-${day.level})`,
                         }}
+                        title={
+                          day.date
+                            ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`
+                            : ""
+                        }
                       />
                     )
-                  }
-
-                  return (
-                    <div
-                      key={day.date || `empty-${weekIndex}-${dayIndex}`}
-                      className="rounded-sm"
-                      style={{
-                        width: CELL_SIZE,
-                        height: CELL_SIZE,
-                        backgroundColor: `var(--activity-${day.level})`,
-                      }}
-                      title={
-                        day.date
-                          ? `${day.count} contribution${day.count !== 1 ? "s" : ""} on ${formatDate(day.date)}`
-                          : ""
-                      }
-                    />
-                  )
-                })}
-              </div>
-            ))}
-          </div>
-          <ScrollBar orientation="horizontal" className="invisible" />
-        </ScrollArea>
-      </div>
+                  })}
+                </div>
+              ))}
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
+        </div>
+      </a>
 
       <div className="mt-2 flex items-baseline justify-between text-sm">
         <div>{totalContributions} contributions in 2025</div>
@@ -118,7 +129,7 @@ function ActivityContent() {
 function ActivitySkeleton() {
   return (
     <div className="flex flex-col">
-      <div className="border-border overflow-hidden rounded-2xl border p-5">
+      <div className="border-border overflow-hidden rounded-2xl border p-6">
         <div className="flex justify-center gap-1">
           {Array.from({ length: 20 }).map((_, weekIndex) => (
             <div key={weekIndex} className="flex flex-col gap-1">
@@ -266,5 +277,5 @@ function generateDaysGrid(contributions: Record<string, number>) {
     }
   }
 
-  return transposedGrid
+  return transposedGrid.slice(0, Math.min(transposedGrid.length, 53)) // Limit to 53 weeks (full year)
 }

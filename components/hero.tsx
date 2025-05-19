@@ -3,6 +3,27 @@ import { Badge } from "@/components/ui/badge"
 import { IconCircleDashed } from "@tabler/icons-react"
 import { cn } from "@/lib/utils"
 
+const data = {
+  name: "Tanner",
+  username: "tannertanner1",
+  title: "Developer & Designer",
+  location: "Tokyo, Japan",
+  items: [
+    [
+      { name: "react", url: "https://react.dev/" },
+      { name: "typescript", url: "https://www.typescriptlang.org/" },
+      { name: "nextjs", url: "https://nextjs.org/" },
+      { name: "tailwind", url: "https://tailwindcss.com/" },
+    ],
+    [
+      { name: "motion", url: "https://motion.dev/" },
+      { name: "shadcn", url: "https://ui.shadcn.com/" },
+      { name: "drizzle", url: "https://orm.drizzle.team/" },
+      { name: "postgres", url: "https://www.postgresql.org/" },
+    ],
+  ],
+}
+
 function Name() {
   return (
     <ViewTransition>
@@ -40,27 +61,6 @@ function Name() {
   )
 }
 
-const data = {
-  name: "Tanner",
-  username: "tannertanner1",
-  title: "Developer & Designer",
-  location: "Tokyo, Japan",
-  items: [
-    [
-      { name: "react", url: "https://react.dev/" },
-      { name: "typescript", url: "https://www.typescriptlang.org/" },
-      { name: "nextjs", url: "https://nextjs.org/" },
-      { name: "tailwind", url: "https://tailwindcss.com/" },
-    ],
-    [
-      { name: "motion", url: "https://motion.dev/" },
-      { name: "shadcn", url: "https://ui.shadcn.com/" },
-      { name: "drizzle", url: "https://orm.drizzle.team/" },
-      { name: "postgres", url: "https://www.postgresql.org/" },
-    ],
-  ],
-}
-
 function Tech({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
@@ -74,13 +74,7 @@ function Tech({ className }: { className?: string }) {
               rel="noopener noreferrer"
               className="group inline-block"
             >
-              <Badge
-                variant="secondary"
-                // "className="bg-[#e8eaed] text-[#3c4043] transition-colors duration-300 group-hover:bg-[#3c4043] group-hover:text-[#e8eaed] "dark:bg-[#3c4043] dark:text-[#e8eaed] dark:group-hover:bg-[#e8eaed] dark:group-hover:text-[#3c4043]"
-                // className="text-primary bg-[#e8eaed] dark:bg-[#e8eaed]/50"
-              >
-                {tech.name}
-              </Badge>
+              <Badge variant="secondary">{tech.name}</Badge>
             </a>
           ))}
         </div>
@@ -104,12 +98,11 @@ function Hero() {
             <Tech />
           </div>
         </div>
-        {/* Placeholder */}
-        <div className="border-border inset-shadow-md absolute bottom-0 left-1/2 flex h-64 w-64 -translate-x-1/2 items-center justify-center rounded-full border inset-shadow-black/10 @3xl:relative @3xl:bottom-auto @3xl:left-auto @3xl:translate-x-0 @3xl:justify-self-end dark:inset-shadow-white/5">
-          <IconCircleDashed
-            // className="text-accent dark:text-primary/50 h-16 w-16"
-            className="text-secondary/90 h-16 w-16"
-            aria-hidden="true"
+        <div className="border-border inset-shadow-md absolute bottom-0 left-1/2 flex h-64 w-64 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full border inset-shadow-black/10 @3xl:relative @3xl:bottom-auto @3xl:left-auto @3xl:translate-x-0 @3xl:justify-self-end dark:inset-shadow-white/5">
+          <img
+            src="/photo.png"
+            alt={data.name}
+            className="h-full w-full object-cover"
           />
         </div>
       </div>

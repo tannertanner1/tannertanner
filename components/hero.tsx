@@ -99,10 +99,18 @@ function Hero() {
           </div>
         </div>
         <div className="border-border inset-shadow-md absolute bottom-0 left-1/2 flex h-64 w-64 -translate-x-1/2 items-center justify-center overflow-hidden rounded-full border inset-shadow-black/10 @3xl:relative @3xl:bottom-auto @3xl:left-auto @3xl:translate-x-0 @3xl:justify-self-end dark:inset-shadow-white/5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/photo.png"
             alt={data.name}
-            className="h-full w-full object-cover"
+            width="2048"
+            height="1664"
+            loading="eager"
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
           />
         </div>
       </div>

@@ -155,7 +155,7 @@ function ActivitySkeleton() {
   )
 }
 
-export function Activity() {
+function Component() {
   return (
     <section id="activity">
       <h2 className="text-4xl font-bold">Contribution Activity</h2>
@@ -279,3 +279,5 @@ function generateDaysGrid(contributions: Record<string, number>) {
 
   return transposedGrid.slice(0, Math.min(transposedGrid.length, 53)) // Limit to 53 weeks (full year)
 }
+
+export { Component }

@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
+  images: {
+    unoptimized: true,
+  },
 }
 
 export default nextConfig

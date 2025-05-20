@@ -6,8 +6,8 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Skeleton } from "@/components/ui/skeleton"
 import { config } from "@/lib/config"
 
-const CELL_SIZE = "1.0625rem"
-const CELL_GAP = "0.0625rem"
+const SIZE = "1.0625rem"
+const GAP = "0.0625rem"
 
 const fetcher = (url: string) =>
   fetch(url)
@@ -55,13 +55,13 @@ function ActivityContent() {
           <ScrollArea className="w-full [&_[data-slot=scroll-area-thumb]]:bg-transparent">
             <div
               className="flex w-full justify-center p-6"
-              style={{ gap: CELL_GAP }}
+              style={{ gap: GAP }}
             >
               {contributionData.map((week, weekIndex) => (
                 <div
                   key={weekIndex}
                   className="flex flex-col"
-                  style={{ gap: CELL_GAP }}
+                  style={{ gap: GAP }}
                 >
                   {week.map((day, dayIndex) => {
                     // Don't render cells for dates outside 2025
@@ -70,8 +70,8 @@ function ActivityContent() {
                         <div
                           key={`empty-${weekIndex}-${dayIndex}`}
                           style={{
-                            width: CELL_SIZE,
-                            height: CELL_SIZE,
+                            width: SIZE,
+                            height: SIZE,
                           }}
                         />
                       )
@@ -82,8 +82,8 @@ function ActivityContent() {
                         key={day.date || `empty-${weekIndex}-${dayIndex}`}
                         className="rounded-sm"
                         style={{
-                          width: CELL_SIZE,
-                          height: CELL_SIZE,
+                          width: SIZE,
+                          height: SIZE,
                           backgroundColor: `var(--activity-${day.level})`,
                         }}
                         title={
@@ -138,8 +138,8 @@ function ActivitySkeleton() {
                   key={`${weekIndex}-${dayIndex}`}
                   className="rounded-sm opacity-30"
                   style={{
-                    width: CELL_SIZE,
-                    height: CELL_SIZE,
+                    width: SIZE,
+                    height: SIZE,
                   }}
                 />
               ))}
@@ -155,7 +155,7 @@ function ActivitySkeleton() {
   )
 }
 
-function Component() {
+function Activity() {
   return (
     <section id="activity">
       <h2 className="text-4xl font-bold">Contribution Activity</h2>
@@ -280,4 +280,4 @@ function generateDaysGrid(contributions: Record<string, number>) {
   return transposedGrid.slice(0, Math.min(transposedGrid.length, 53)) // Limit to 53 weeks (full year)
 }
 
-export { Component }
+export { Activity }

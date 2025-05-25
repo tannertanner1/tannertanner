@@ -20,6 +20,16 @@ function Footer() {
         hoverIcon={<IconArrowUpRight className="h-2.5 w-2.5" />}
         ariaLabel={`Visit ${config.username}'s GitHub profile`}
       />
+      <p
+        className="sr-only"
+        // className="text-muted-foreground text-sm"
+      >
+        Built by {config.username}. The source code is available on{" "}
+        <a href={config.github} target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+        .
+      </p>
       <Email
         textToCopy={config.email}
         displayText={config.domain}

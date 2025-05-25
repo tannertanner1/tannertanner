@@ -5,7 +5,7 @@ const config = {
   username: "tannertanner1",
   domain: "tannertanner.me",
   url: "https://tannertanner.me",
-  og: "https://tannertanner.me/image.png", // Must be an absolute URL
+  og: "https://tannertanner.me/photo.png", // Must be an absolute URL
   github: "https://github.com/tannertanner1",
   email: "tanner@tannertanner.me",
 }

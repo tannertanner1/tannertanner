@@ -387,16 +387,3 @@
     overflow: hidden;
   }
 }
-
-@supports (-webkit-touch-callout: none) {
-  .h-\[100svh\] {
-    height: -webkit-fill-available;
-  }
-  .fixed-layout {
-    height: -webkit-fill-available;
-    max-height: -webkit-fill-available;
-  }
-  .scrollable-content {
-    -webkit-overflow-scrolling: touch;
-  }
-}

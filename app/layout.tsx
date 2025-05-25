@@ -49,6 +49,104 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: META_THEME_COLORS.light }
 
+export const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: `${config.name} | ${config.domain}`,
+      url: config.url,
+      description: config.description,
+      keywords: [
+        config.username,
+        config.name,
+        "React",
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Frontend",
+        "Fullstack",
+        "Developer Portfolio",
+        "Tokyo Dev",
+      ],
+      author: {
+        "@type": "Person",
+        name: config.username,
+        url: config.url,
+        identifier: config.username,
+      },
+      image: {
+        "@type": "ImageObject",
+        url: config.og,
+        width: 1600,
+        height: 800,
+        alt: config.username,
+      },
+      creator: config.username,
+      publisher: {
+        "@type": "Person",
+        name: config.username,
+        url: config.url,
+      },
+    },
+    {
+      "@type": "Person",
+      name: config.name,
+      alternateName: config.username,
+      identifier: config.username,
+      url: config.url,
+      description: "Frontend Developer & Designer / Full-stack Generalist",
+      jobTitle: "Frontend Developer & Designer / Full-stack Generalist",
+      image: config.og,
+      sameAs: [
+        config.github,
+        "https://x.com/tannertanner404",
+        "https://omgbff.com",
+        "https://ilutoo.com",
+      ],
+      knowsAbout: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "UI/UX Design",
+        "GitHub",
+        "shadcn/ui",
+        "Stripe",
+        "Resend",
+        "Authentication",
+      ],
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      name: "tannertanner",
+      description:
+        "Portfolio site by tannertanner1 built with Next.js 15, React 19, TypeScript, and TailwindCSS — featuring GitHub activity and side projects.",
+      programmingLanguage: "TypeScript",
+      runtimePlatform: "Node.js",
+      codeSampleType: "full-solution",
+      codeRepository: "https://github.com/tannertanner1/tannertanner",
+      creator: {
+        "@type": "Person",
+        name: config.username,
+        url: config.url,
+      },
+      author: {
+        "@type": "Person",
+        name: config.username,
+        url: config.url,
+      },
+      about: {
+        "@type": "WebSite",
+        name: config.domain,
+        url: config.url,
+      },
+      isAccessibleForFree: true,
+      creativeWorkStatus: "Published",
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +155,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

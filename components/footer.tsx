@@ -81,7 +81,7 @@ function Github({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-muted-foreground group flex cursor-pointer items-center"
+      className="text-muted-foreground group -ml-0.5 flex cursor-pointer items-center"
       aria-label={ariaLabel}
     >
       <span className="relative inline-flex h-4 w-4 items-center justify-center rounded-full">

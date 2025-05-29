@@ -12,9 +12,10 @@ const META_THEME_COLORS = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(config.url),
+  alternates: { canonical: config.url },
   title: config.name,
   description: config.description,
-  metadataBase: new URL(config.url),
   authors: [
     {
       name: config.name,
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: META_THEME_COLORS.light }
 
-export const jsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {

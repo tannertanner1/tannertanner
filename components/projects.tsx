@@ -62,8 +62,18 @@ function Projects() {
         {/* omgbff */}
         <div className="space-y-4">
           <div className="border-border inset-shadow-md flex h-48 w-full items-center justify-center overflow-hidden rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5">
-            {/* TODO: replace with screen recording GIF */}
-            <IconBorderCorners className="text-secondary/90 h-16 w-16" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/omgbff.webp"
+              alt="omgbff light preview"
+              className="block h-full w-full object-cover dark:hidden"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/omgbff-dark.webp"
+              alt="omgbff dark preview"
+              className="hidden h-full w-full object-cover dark:block"
+            />
           </div>
           <div className="flex items-center justify-between">
             <a

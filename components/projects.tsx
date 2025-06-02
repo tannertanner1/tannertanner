@@ -61,18 +61,23 @@ function Projects() {
 
         {/* omgbff */}
         <div className="space-y-4">
-          <div className="border-border inset-shadow-md flex h-48 w-full items-center justify-center overflow-hidden rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5">
+          <div
+            // className="border-border inset-shadow-md flex h-48 w-full items-center justify-center overflow-hidden rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5"
+            className="border-border relative aspect-[830/499] w-full overflow-hidden rounded-sm border shadow-sm"
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/omgbff.webp"
-              alt="omgbff light preview"
-              className="block h-full w-full object-cover dark:hidden"
+              alt="omgbff preview"
+              // className="block h-full w-full object-cover dark:hidden"
+              className="absolute inset-0 block h-full w-full object-contain dark:hidden"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/omgbff-dark.webp"
               alt="omgbff dark preview"
-              className="hidden h-full w-full object-cover dark:block"
+              // className="hidden h-full w-full object-cover dark:block"
+              className="absolute inset-0 hidden h-full w-full object-contain dark:block"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -102,18 +107,23 @@ function Projects() {
 
         {/* ilutoo */}
         <div className="space-y-4">
-          <div className="border-border inset-shadow-md flex h-48 w-full items-center justify-center overflow-hidden rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5">
+          <div
+            // className="border-border inset-shadow-md flex h-48 w-full items-center justify-center overflow-hidden rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5"
+            className="border-border relative aspect-[830/499] w-full overflow-hidden rounded-sm border shadow-sm"
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/ilutoo.png"
               alt="ilutoo"
-              className="block h-full w-full object-cover dark:hidden"
+              // className="block h-full w-full object-cover dark:hidden"
+              className="absolute inset-0 block h-full w-full object-contain dark:hidden"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/ilutoo-dark.png"
               alt="ilutoo dark"
-              className="hidden h-full w-full object-cover dark:block"
+              // className="hidden h-full w-full object-cover dark:block"
+              className="absolute inset-0 hidden h-full w-full object-contain dark:block"
             />
           </div>
           <div className="flex items-center justify-between">

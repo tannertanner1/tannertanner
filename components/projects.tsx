@@ -31,18 +31,18 @@ function Projects() {
       <div className="mt-8 grid grid-cols-1 gap-8 @3xl:grid-cols-2">
         {data.items.map(({ domain, github, preview, open }) => (
           <div key={domain} className="space-y-4">
-            <div className="border-border relative aspect-[830/499] w-full overflow-hidden rounded-[1rem] border">
+            <div className="border-border relative aspect-[830/499] w-full overflow-hidden rounded-[0.625rem] border">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={preview.light}
                 alt={`${domain} preview`}
-                className="absolute inset-0 block h-[101%] w-[101%] origin-center rounded-[1rem] object-cover pb-0.5 dark:hidden"
+                className="absolute inset-0 block origin-center scale-[101%] object-cover pb-0.5 dark:hidden"
               />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={preview.dark}
                 alt={`${domain} dark preview`}
-                className="absolute inset-0 hidden h-[101%] w-[101%] origin-center rounded-[1rem] object-cover pb-0.5 dark:block"
+                className="absolute inset-0 hidden origin-center scale-[101%] object-cover pb-0.5 dark:block"
               />
             </div>
             <div className="flex items-center justify-between">

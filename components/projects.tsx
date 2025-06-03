@@ -1,19 +1,25 @@
-import { IconCode, IconBorderCorners } from "@tabler/icons-react"
+import { IconCode } from "@tabler/icons-react"
 
 const data = {
   heading: "Selected Projects",
   items: [
     {
-      title: "omgbff.com",
-      type: "Invoices",
-      url: "https://omgbff.com",
+      domain: "omgbff.com",
       github: "https://github.com/tannertanner1/omgbff",
+      preview: {
+        light: "/omgbff.webp",
+        dark: "/omgbff-dark.webp",
+      },
+      open: true,
     },
     {
-      title: "ilutoo.com",
-      type: "Products",
-      url: "https://ilutoo.com",
+      domain: "ilutoo.com",
       github: "https://github.com/tannertanner1/ilutoo",
+      preview: {
+        light: "/ilutoo.png",
+        dark: "/ilutoo-dark.png",
+      },
+      open: false,
     },
   ],
 }
@@ -21,135 +27,52 @@ const data = {
 function Projects() {
   return (
     <section id="projects">
-      <h2 className="text-4xl font-bold">Selected Projects</h2>
-      <div className="mt-8 grid grid-cols-1 gap-8 @xl:grid-cols-2">
-        {/* {data.items.map((project) => (
-          <div key={project.title} className="space-y-4">
-            <div className="border-border inset-shadow-md flex h-48 w-full items-center justify-center rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5">
-              <IconBorderCorners
-                // className="text-accent dark:text-primary/50 h-16 w-16"
-                className="text-secondary/90 h-16 w-16"
-                aria-hidden="true"
+      <h2 className="text-4xl font-bold">{data.heading}</h2>
+      <div className="mt-8 grid grid-cols-1 gap-8 @3xl:grid-cols-2">
+        {data.items.map(({ domain, github, preview, open }) => (
+          <div key={domain} className="space-y-4">
+            <div className="border-border relative aspect-[830/499] w-full overflow-hidden rounded-[1rem] border">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={preview.light}
+                alt={`${domain} preview`}
+                className="absolute inset-0 block h-[101%] w-[101%] origin-center rounded-[1rem] object-cover pb-0.5 dark:hidden"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={preview.dark}
+                alt={`${domain} dark preview`}
+                className="absolute inset-0 hidden h-[101%] w-[101%] origin-center rounded-[1rem] object-cover pb-0.5 dark:block"
               />
             </div>
             <div className="flex items-center justify-between">
               <a
-                href={project.url}
+                href={`https://${domain}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-lg"
               >
-                {project.title}
+                {domain}
               </a>
               <a
-                href={project.github}
+                href={github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`View code for ${project.title}`}
+                aria-label={`View code for ${domain}`}
               >
-                <span className="cursor-not-allowed" aria-disabled="true">
+                <span
+                  className={open ? "cursor-pointer" : "cursor-not-allowed"}
+                  aria-disabled={!open}
+                >
                   <IconCode
-                    className="text-muted-foreground/40 pointer-events-none h-5 w-5"
+                    className="text-muted-foreground/40 h-5 w-5"
                     aria-hidden="true"
                   />
                 </span>
               </a>
             </div>
-            <p className='text-muted-foreground'>{project.type}</p>
           </div>
-        ))} */}
-
-        {/* omgbff */}
-        <div className="space-y-4">
-          <div
-            // className="border-border inset-shadow-md flex h-48 w-full items-center justify-center overflow-hidden rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5"
-            className="border-border relative aspect-[830/499] w-full overflow-hidden rounded-sm border shadow-sm"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/omgbff.webp"
-              alt="omgbff preview"
-              // className="block h-full w-full object-cover dark:hidden"
-              className="absolute inset-0 block h-full w-full object-contain dark:hidden"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/omgbff-dark.webp"
-              alt="omgbff dark preview"
-              // className="hidden h-full w-full object-cover dark:block"
-              className="absolute inset-0 hidden h-full w-full object-contain dark:block"
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <a
-              href={data.items[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg"
-            >
-              {data.items[0].title}
-            </a>
-            <a
-              href={data.items[0].github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View code for ${data.items[0].title}`}
-            >
-              <span className="cursor-not-allowed" aria-disabled="true">
-                <IconCode
-                  className="text-muted-foreground/40 pointer-events-none h-5 w-5"
-                  aria-hidden="true"
-                />
-              </span>
-            </a>
-          </div>
-        </div>
-
-        {/* ilutoo */}
-        <div className="space-y-4">
-          <div
-            // className="border-border inset-shadow-md flex h-48 w-full items-center justify-center overflow-hidden rounded-lg border inset-shadow-black/10 @xl:h-56 dark:inset-shadow-white/5"
-            className="border-border relative aspect-[830/499] w-full overflow-hidden rounded-sm border shadow-sm"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/ilutoo.png"
-              alt="ilutoo"
-              // className="block h-full w-full object-cover dark:hidden"
-              className="absolute inset-0 block h-full w-full object-contain dark:hidden"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/ilutoo-dark.png"
-              alt="ilutoo dark"
-              // className="hidden h-full w-full object-cover dark:block"
-              className="absolute inset-0 hidden h-full w-full object-contain dark:block"
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <a
-              href={data.items[1].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg"
-            >
-              {data.items[1].title}
-            </a>
-            <a
-              href={data.items[1].github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View code for ${data.items[1].title}`}
-            >
-              <span className="cursor-not-allowed" aria-disabled="true">
-                <IconCode
-                  className="text-muted-foreground/40 pointer-events-none h-5 w-5"
-                  aria-hidden="true"
-                />
-              </span>
-            </a>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   )

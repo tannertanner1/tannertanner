@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { cn } from "@/lib/utils"
 import { config } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
+import { Analytics } from "@/components/analytics"
 import { Providers } from "@/components/providers"
 import { Container } from "@/components/container"
 import "./globals.css"
@@ -206,6 +207,7 @@ export default function RootLayout({
           enableColorScheme
         >
           <Container>{children}</Container>
+          <Analytics />
         </Providers>
       </body>
     </html>

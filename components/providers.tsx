@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { ThemeProvider } from "next-themes"
 import { unstable_ViewTransition as ViewTransition } from "react"
+import { ThemeProvider } from "next-themes"
 import { Toaster } from "@/components/ui/sonner"
 
 function Providers({

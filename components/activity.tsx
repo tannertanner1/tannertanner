@@ -2,9 +2,9 @@
 
 import { Suspense } from "react"
 import useSWR from "swr"
+import { config } from "@/lib/config"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Skeleton } from "@/components/ui/skeleton"
-import { config } from "@/lib/config"
 
 const SIZE = "1.0625rem"
 const GAP = "0.0625rem"

@@ -1,4 +1,4 @@
-import { Slackside_One, LXGW_WenKai_Mono_TC } from "next/font/google"
+import { LXGW_WenKai_Mono_TC, Slackside_One } from "next/font/google"
 import { cn } from "@/lib/utils"
 
 const fontSans = Slackside_One({

@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
-import { motion } from "motion/react"
+import { useEffect, useRef, useState } from "react"
 import {
-  IconCopy,
-  IconCheck,
-  IconAt,
   IconArrowUpRight,
+  IconAt,
+  IconCheck,
+  IconCopy,
 } from "@tabler/icons-react"
+import { motion } from "motion/react"
 import { config } from "@/lib/config"
 
 function Footer() {

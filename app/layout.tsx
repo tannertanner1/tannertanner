@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next"
-import { cn } from "@/lib/utils"
 import { config } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
 import { Analytics } from "@/components/analytics"
-import { Providers } from "@/components/providers"
 import { Container } from "@/components/container"
+import { Providers } from "@/components/providers"
 import "./globals.css"
 
 const META_THEME_COLORS = {

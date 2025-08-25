@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { config } from "@/lib/config"
 
 type GitHubCommit = {
   commit: {
@@ -28,11 +29,7 @@ export async function GET() {
 
   try {
     // Repos
-    const repositories = [
-      "tannertanner1/tannertanner",
-      "tannertanner1/omgbff",
-      "tannertanner1/ilutoo",
-    ]
+    const repos = config.repos
 
     // Dates
     const since = "2025-01-01T00:00:00Z"
@@ -75,7 +72,7 @@ export async function GET() {
 
     // Fetch commits from each repo with pagination
     await Promise.all(
-      repositories.map(async (repo) => {
+      repos.map(async (repo) => {
         try {
           const commits = await fetchAllCommits(repo)
 
@@ -108,7 +105,7 @@ export async function GET() {
 
         while (hasMore && page <= 10) {
           try {
-            const eventsUrl = `https://api.github.com/users/tannertanner1/events?per_page=100&page=${page}`
+            const eventsUrl = `https://api.github.com/users/${config.username}/events?per_page=100&page=${page}`
             const eventsResponse = await fetch(eventsUrl, {
               headers: {
                 Authorization: `token ${token}`,

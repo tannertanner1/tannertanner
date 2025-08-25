@@ -1,11 +1,30 @@
 const config = {
-  name: "Tanner",
-  description:
-    "Developer & Designer based in Tokyo, Japan. Building with React, TypeScript, and Next.js.",
-  username: "tannertanner1",
   domain: "tannertanner.me",
   url: "https://tannertanner.me",
-  og: "https://tannertanner.me/photo.png", // Must be an absolute URL
+  name: "Tanner",
+  username: "tannertanner1",
+  title: "Developer & Designer",
+  description: "Developer & Designer. Building with React and TypeScript.",
+  og: "https://tannertanner.me/photo.png",
+  items: [
+    [
+      { name: "react", url: "https://react.dev/" },
+      { name: "typescript", url: "https://www.typescriptlang.org/" },
+      { name: "nextjs", url: "https://nextjs.org/" },
+      { name: "tailwind", url: "https://tailwindcss.com/" },
+    ],
+    [
+      { name: "motion", url: "https://motion.dev/" },
+      { name: "shadcn", url: "https://ui.shadcn.com/" },
+      { name: "drizzle", url: "https://orm.drizzle.team/" },
+      { name: "postgres", url: "https://www.postgresql.org/" },
+    ],
+  ],
+  repos: [
+    "tannertanner1/tannertanner",
+    "tannertanner1/omgbff",
+    "tannertanner1/ilutoo",
+  ],
   github: "https://github.com/tannertanner1",
   projects: {
     heading: "Selected Projects",

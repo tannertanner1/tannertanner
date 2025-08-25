@@ -1,25 +1,11 @@
-const data = {
-  heading: "Work Experience",
-  items: [
-    {
-      title: "Design Engineer",
-      name: "Freelance",
-      period: "2023 – 2024",
-    },
-    {
-      title: "Frontend Developer",
-      name: "Freelance",
-      period: "2022 – Present",
-    },
-  ],
-}
+import { config } from "@/lib/config"
 
 function Experience() {
   return (
     <section id="experience" className="pb-12">
-      <h2 className="text-4xl font-bold">{data.heading}</h2>
+      <h2 className="text-4xl font-bold">{config.experience.heading}</h2>
       <div className="mt-8 grid grid-cols-1 gap-8">
-        {data.items.map((item) => (
+        {config.experience.items.map((item) => (
           <div
             key={item.title}
             className="grid grid-cols-[1fr_auto] items-baseline gap-2"

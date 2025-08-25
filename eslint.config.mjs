@@ -26,7 +26,10 @@ const eslintConfig = [
     }
   },
   ...compat.config({
-    extends: ["next", "prettier"]
+    extends: ["next", "prettier"],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
   })
 ]
 

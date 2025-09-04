@@ -5,7 +5,7 @@ const config = {
   username: "tannertanner1",
   title: "Developer & Designer",
   description:
-    "Developer & Designer. Building with React, TypeScript, Tailwind CSS, and PostgreSQL.",
+    "Developer & Designer. Building with React, TypeScript, Tailwind, Shadcn, Drizzle, and Postgres.",
   og: "https://tannertanner.me/photo.png",
   items: [
     [

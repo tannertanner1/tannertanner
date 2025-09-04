@@ -41,10 +41,7 @@ function Hero() {
             </h1>
           </ViewTransition>
           {/* <h1 className="text-4xl font-bold">{config.name}</h1> */}
-          <p className="sr-only">
-            Developer &amp; Designer. Building with React, TypeScript, Tailwind
-            CSS, and PostgreSQL.
-          </p>
+          <p className="sr-only">{config.description}</p>
           <h2 className="text-muted-foreground mt-2 text-xl">{config.title}</h2>
           <div className="mt-8">
             <div className={cn("flex flex-col gap-2")}>

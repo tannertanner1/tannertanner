@@ -3,23 +3,15 @@ const config = {
   url: "https://tannertanner.me",
   name: "Tanner",
   username: "tannertanner1",
-  title: "Developer & Designer",
+  title: "Web Developer",
   description:
     "Developer & Designer. Building with React, TypeScript, Tailwind, Shadcn, Drizzle, and Postgres.",
   og: "https://tannertanner.me/photo.png",
   items: [
-    [
-      { name: "react", url: "https://react.dev/" },
-      { name: "typescript", url: "https://www.typescriptlang.org/" },
-      { name: "nextjs", url: "https://nextjs.org/" },
-      { name: "tailwind", url: "https://tailwindcss.com/" },
-    ],
-    [
-      { name: "motion", url: "https://motion.dev/" },
-      { name: "shadcn", url: "https://ui.shadcn.com/" },
-      { name: "drizzle", url: "https://orm.drizzle.team/" },
-      { name: "postgres", url: "https://www.postgresql.org/" },
-    ],
+    { name: "react", url: "https://react.dev/" },
+    { name: "typescript", url: "https://www.typescriptlang.org/" },
+    { name: "tailwind", url: "https://tailwindcss.com/" },
+    { name: "postgres", url: "https://www.postgresql.org/" },
   ],
   repos: [
     "tannertanner1/tannertanner",
@@ -48,14 +40,14 @@ const config = {
     heading: "Work Experience",
     items: [
       {
-        title: "Design Engineer",
+        title: "Full Stack Developer",
         name: "Freelance",
-        period: "2023 – 2024",
+        period: "2024 – Present",
       },
       {
-        title: "Frontend Developer",
+        title: "Front End Developer",
         name: "Freelance",
-        period: "2022 – Present",
+        period: "2022 – 2023",
       },
     ],
   },

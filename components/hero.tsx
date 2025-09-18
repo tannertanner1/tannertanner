@@ -44,21 +44,17 @@ function Hero() {
           <p className="sr-only">{config.description}</p>
           <h2 className="text-muted-foreground mt-2 text-xl">{config.title}</h2>
           <div className="mt-8">
-            <div className={cn("flex flex-col gap-2")}>
-              {config.items.map((row, index) => (
-                <div key={`row-${index}`} className="flex flex-wrap gap-2">
-                  {row.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-block"
-                    >
-                      <Badge variant="secondary">{item.name}</Badge>
-                    </a>
-                  ))}
-                </div>
+            <div className={cn("flex flex-wrap gap-2")}>
+              {config.items.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-block"
+                >
+                  <Badge variant="secondary">{item.name}</Badge>
+                </a>
               ))}
             </div>
           </div>

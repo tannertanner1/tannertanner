@@ -5,7 +5,7 @@ const config = {
   username: "tannertanner1",
   title: "Web Developer",
   description:
-    "Freelance Web Developer. Building open source web applications with React, TypeScript, Tailwind, Shadcn, Drizzle, and Postgres.",
+    "Freelance Web Developer. Building open source web applications with React, TypeScript, Tailwind CSS, Drizzle ORM, and PostgreSQL.",
   og: "https://tannertanner.me/photo.png",
   items: [
     { name: "react", url: "https://react.dev/" },

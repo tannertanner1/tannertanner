@@ -96,8 +96,8 @@ const jsonLd = {
       alternateName: config.username,
       identifier: config.username,
       url: config.url,
-      description: "Developer & Designer",
-      jobTitle: "Web Developer",
+      description: `${config.description}`,
+      jobTitle: `${config.title}`,
       image: config.og,
       sameAs: [
         config.github,
